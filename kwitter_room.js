@@ -39,13 +39,20 @@ function getData() {
                   //Start code
                   console.log(Room_names)
                   row = "<div class='room_name' id=" + Room_names + " onclick='redirectToRoomName(this.id)' >#" + Room_names + "</div><hr>";
-                  document.getElementById("output").innerHTML+=row
+                  document.getElementById("output").innerHTML += row
                   //End code
             });
       });
 }
 getData();
+
 function redirectToRoomName(name) {
-      localStorage.setItem("Room_name",name)  
-      window.location="Kwitter_page.html"  
+      localStorage.setItem("Room_name", name)
+      window.location = "Kwitter_page.html"
+}
+
+function log_out() {
+      localStorage.removeItem("Room_name")
+      localStorage.removeItem("user_name")
+      window.location = "index.html"
 }
