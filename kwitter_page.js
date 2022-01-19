@@ -12,8 +12,9 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 username = localStorage.getItem("user_name")
 roomname = localStorage.getItem("Room_name")
+
 function getData() {
-      firebase.database().ref("/" + room_name).on('value', function (snapshot) {
+      firebase.database().ref("/" + roomname).on('value', function (snapshot) {
             document.getElementById("output").innerHTML = "";
             snapshot.forEach(function (childSnapshot) {
                   childKey = childSnapshot.key;
@@ -29,12 +30,19 @@ function getData() {
       });
 }
 getData();
+
 function Send() {
-      msg=document.getElementById("send_message").value
+      msg = document.getElementById("send_message").value
       firebase.database().ref(roomname).push({
-            name:username,
-            message:msg,
-            like:0
+            name: username,
+            message: msg,
+            like: 0
       });
-      document.getElementById("send_message").value=""
+      document.getElementById("send_message").value = ""
+}
+
+function log_out() {
+      localStorage.removeItem("Room_name")
+      localStorage.removeItem("user_name")
+      window.location = "index.html"
 }
