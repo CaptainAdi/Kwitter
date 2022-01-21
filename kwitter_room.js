@@ -48,7 +48,7 @@ getData();
 
 function redirectToRoomName(name) {
       localStorage.setItem("Room_name", name)
-      window.location = "Kwitter_page.html"
+      window.location = "kwitter_page.html"
 }
 
 function log_out() {
